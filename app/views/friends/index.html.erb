@@ -1,14 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Friends</h1>
+<h1>Friends List</h1>
 
-<div id="friends">
+<table class="table-success" >
+  <thead class="table-warning">
+    <td>First Name</td>
+    <td>Last Name</td>
+    <td>Email</td>
+    <td>Phone</td>
+    <td> Twitter</td>
+    <td>Show Friend</td>
+  </thead>
   <% @friends.each do |friend| %>
     <%= render friend %>
     <p>
-      <%= link_to "Show this friend", friend %>
+      
     </p>
   <% end %>
-</div>
+</table>
 
 <%= link_to "New friend", new_friend_path %>
