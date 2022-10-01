@@ -2,8 +2,8 @@
 
 <h1>Friends List</h1>
 
-<table class="table-success" >
-  <thead class="table-warning">
+<table class="table table-responsive table-hover" >
+  <thead class="me">
     <td>First Name</td>
     <td>Last Name</td>
     <td>Email</td>
@@ -19,4 +19,6 @@
   <% end %>
 </table>
 
-<%= link_to "New friend", new_friend_path %>
+<button type="button" class="btn btn-warning">
+  <%= link_to "New friend", new_friend_path %>
+</button>
