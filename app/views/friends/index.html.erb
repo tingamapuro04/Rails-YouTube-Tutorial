@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Friends List</h1>
+
+<table class="table table-responsive table-hover" >
+  <thead class="me">
+    <td>First Name</td>
+    <td>Last Name</td>
+    <td>Email</td>
+    <td>Phone</td>
+    <td> Twitter</td>
+    <td>Show Friend</td>
+  </thead>
+  <% @friends.each do |friend| %>
+    <%= render friend %>
+    <p>
+      
+    </p>
+  <% end %>
+</table>
+
+<button type="button" class="btn btn-warning">
+  <%= link_to "New friend", new_friend_path %>
+</button>

@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+.main {
+  display: block;
+}
+
+.table-head {
+  background: #333;
+  color: #fff;
+}
+
+
+
+.me {
+  background: #333;
+  color: #fff;
+}
+
+.btn-dark {
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
