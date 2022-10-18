@@ -22,11 +22,39 @@
           <%= link_to 'About', home_about_path, class: 'nav-link' %>
         </li>
 
+        <% if agent_signed_in? %>
+
+          
+
+          <li>
+            <%= link_to 'Edit Profile', edit_agent_registration_path, class: 'nav-link' %>
+          </li>
+
+          <li>
+            <%= link_to 'Add Friend', new_friend_path, class: 'nav-link' %>
+          </li>
+
+          <li>
+            <%= link_to 'Sign out', destroy_agent_session_path, method: :DELETE, class: 'nav-link' %>
+          </li>
+
+        <% else %>
+
+          <li>
+            <%= link_to 'Sign in', new_agent_session_path, class: 'nav-link' %>
+          </li>
+
+          <li>
+            <%= link_to 'Sign Up', new_agent_registration_path, class: 'nav-link' %>
+          </li>
+
+        <% end %>
+
         
 
-        <li>
-          <%= link_to 'Add Friend', new_friend_path, class: 'nav-link' %>
-        </li>
+        
+
+        
 
         
 

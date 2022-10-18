@@ -37,6 +37,10 @@
   </div>
 
   <div>
+    <%= form.number_field :agent_id, id: :friend_agent_id, value: current_agent.id, type: :hidden %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

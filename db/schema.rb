@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_02_093225) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_09_064419) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "agents", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_agents_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_agents_on_reset_password_token", unique: true
+  end
 
   create_table "friends", force: :cascade do |t|
     t.string "First_name"
@@ -23,6 +35,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_02_093225) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "agent_id"
+    t.index ["agent_id"], name: "index_friends_on_agent_id"
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
