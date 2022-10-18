@@ -1,5 +1,7 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: %i[ show edit update destroy ]
+  before_action :authenticate_agent!, except: %i[index show]
+  before_action :correct_agent, only: %i[destroy edit update]
 
   # GET /friends or /friends.json
   def index
@@ -12,7 +14,8 @@ class FriendsController < ApplicationController
 
   # GET /friends/new
   def new
-    @friend = Friend.new
+    # @friend = Friend.new
+    @friend = current_agent.friends.build
   end
 
   # GET /friends/1/edit
@@ -21,7 +24,8 @@ class FriendsController < ApplicationController
 
   # POST /friends or /friends.json
   def create
-    @friend = Friend.new(friend_params)
+    # @friend = Friend.new(friend_params)
+    @friend = current_agent.friends.build(friend_params)
 
     respond_to do |format|
       if @friend.save
@@ -45,6 +49,12 @@ class FriendsController < ApplicationController
         format.json { render json: @friend.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # Identify the correct agent
+  def correct_agent
+    @friend = current_agent.friends.find_by(id: params[:id])
+    redirect_to friends_path, notice: 'Not authorised to complete this action' if @friend.nil?
   end
 
   # DELETE /friends/1 or /friends/1.json
